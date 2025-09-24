@@ -2,3 +2,4 @@
 .venv/
 .ml-venv/
 *.json
+__pycache__/
