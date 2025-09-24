@@ -89,6 +89,11 @@ def no_stop_variant(text: str) -> str:
         out.append(tok)
     return " ".join(out)
 
+def mk_id(date: str, summary: str) -> str:
+    """Stable id = YYYY-MM-DD + 8-char hash of summary."""
+    h = hashlib.sha1(summary.encode("utf-8")).hexdigest()[:8]
+    return f"{date}_{h}"
+
 def transform_data(rec: Dict[str, Any]) -> Dict[str, Any]:
     date = rec.get("date") or ""
     summary_raw = rec.get("Summary_clean") or ""
@@ -106,6 +111,7 @@ def transform_data(rec: Dict[str, Any]) -> Dict[str, Any]:
     summary_no_stop = no_stop_variant(summary_norm)
 
     out = {
+        "id": mk_id(date, summary_raw) if rec.get("id") is None else rec.get("id"),
         "date": date,
         "datetime": rec.get("datetime"),
         "summary": summary_raw,          # keep original text
@@ -159,7 +165,7 @@ def normalize_data(data_path: str):
     forecast_df["datetime"] = pd.to_datetime(forecast_df["date"])
 
     # choose fields
-    df = forecast_df[["datetime", "Above Treeline", "Treeline", "Below Treeline", "Summary_clean", "date"]]
+    df = forecast_df[["id", "datetime", "Above Treeline", "Treeline", "Below Treeline", "Summary_clean", "date"]]
 
     # merge with manual forecasts
     manual_forecast_df = create_manual_forecasts_df()
