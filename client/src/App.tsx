@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
 
+import { SummaryTextForm } from './components';
 import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple } from '@mantine/core';
 
 const myColor: MantineColorsTuple = [
@@ -28,6 +29,7 @@ function App() {
       <Box bg="myColor.9" mih="100dvh" w="100%">
         <Container>
             <Title c="myColor.0" ta="center">Avy Brief</Title>
+            <SummaryTextForm />
         </Container>
       </Box>
 
