@@ -12,6 +12,13 @@ export async function getLatest() {
   return r.json();
 }
 
+export async function getSamples(limit: number) {
+  const r = await fetch(`${API}/api/samples?limit=${limit}`);
+  if (!r.ok) throw new Error("no_samples");
+  const data = await r.json();
+  return data.forecasts; // Extract the forecasts array from the response
+}
+
 export async function predictText(summaryText: string) {
   const r = await fetch(`${API}/api/predict-text`, {
     method: "POST",

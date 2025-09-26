@@ -1,8 +1,7 @@
-import { Button, Textarea, Text } from '@mantine/core';
+import { Button, Textarea, Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { DangerLevels } from '../DangerLevels/DangerLevels';
 import { useSummaryTextForm } from './hooks/useSummaryTextForm';    
-
 
 export function SummaryTextForm() {
     const form = useForm({
@@ -17,6 +16,7 @@ export function SummaryTextForm() {
 
     return (
         <>
+        <Title>Summary Text Form</Title>    
         <form onSubmit={form.onSubmit((values) => handleSubmit(values.summaryText))}>
             <Textarea {...form.getInputProps('summaryText')} />
             <Button variant="filled" color='myColor.5' type="submit">Submit</Button>

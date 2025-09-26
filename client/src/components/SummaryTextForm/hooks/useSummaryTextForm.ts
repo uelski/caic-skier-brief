@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { Forecast, DangerLevel, ElevBand } from '../../../types';
 import { predictText } from '../../../api';
 
