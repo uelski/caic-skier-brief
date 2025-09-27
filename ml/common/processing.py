@@ -34,7 +34,7 @@ def _extract_texts_and_labels(rows: list[dict], text_field: str) -> tuple[list[s
     for r in rows:
         texts.append(r[text_field])
         lv = r["levels_0to4"]
-        btl.append(int(lv["below_treeline"]))  # 1...5
+        btl.append(int(lv["below_treeline"]))  # 0...5
         tl.append(int(lv["treeline"]))
         atl.append(int(lv["above_treeline"]))
     y = {
