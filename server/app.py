@@ -18,7 +18,8 @@ app.add_middleware(
     allow_methods=["*"], allow_headers=["*"],
 )
 
-ModelName = Literal["tfidf_mlp", "rule_based"] 
+models = ["tfidf_mlp", "rule_based"]
+ModelName = Literal[*models] 
 
 class PredictTextIn(BaseModel):
     summaryText: str = Field(...,min_length=1, description="The summary text to predict")
@@ -60,6 +61,10 @@ def get_latest():
 @app.get("/api/samples")
 def get_samples(limit: int = Query(default=10, ge=1, le=100)):
     return {"forecasts": samples(limit)}
+
+@app.get("/api/models")
+def get_models():
+    return {"models": models}
 
 @app.post("/api/predict-levels")
 def predict_levels(body: PredictTextIn) -> PredictOut:
