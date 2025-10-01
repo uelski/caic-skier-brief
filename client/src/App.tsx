@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 
 import { SummaryTextForm, ForecastSampleList } from './components';
-import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple } from '@mantine/core';
+import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple, Text, AppShell, Group } from '@mantine/core';
 
 const myColor: MantineColorsTuple = [
   '#f1f4fe',
@@ -26,12 +26,26 @@ function App() {
 
   return (
     <MantineProvider theme={theme}>
-      <Box bg="myColor.9" mih="100dvh" w="100%">
-        <Container>
-            <Title c="myColor.0" ta="center">Avy Brief</Title>
-            <SummaryTextForm />
-            <ForecastSampleList />
-        </Container>
+      <Box bg="black" mih="100dvh" w="100%">
+        <AppShell
+        header={{ height: 60 }}
+        padding="md"
+        >
+          <AppShell.Header withBorder={true} style={{ borderColor: theme!.colors!.myColor![4] }} >
+            <Group bg="black" c="white" h="100%" px="md">
+              CAIC DATA
+            </Group>
+          </AppShell.Header>
+          <AppShell.Main>
+            <Container p="lg">
+              <Title c="white" ta="center">Avy Brief</Title>
+              <Text c="white" ta="center">Enter a summary text to get a forecast</Text>
+              <SummaryTextForm />
+              {/* <ForecastSampleList /> */}
+            </Container>
+
+          </AppShell.Main>
+        </AppShell>
       </Box>
 
     </MantineProvider>

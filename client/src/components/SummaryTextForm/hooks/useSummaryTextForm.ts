@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { Forecast, DangerLevel, ElevBand } from '../../../types';
-import { predictText } from '../../../api';
+import { predictText, getModels } from '../../../api';
 
 export function useSummaryTextForm(reset: () => void) {
     const [forecast, setForecast] = useState<Forecast | null>(null);
     const [summary, setSummary] = useState<string | null>(null);
-    const handleSubmit = async (summaryText: string) => {
+    const [models, setModels] = useState<string[]>([]);
+    useEffect(() => {
+        const getNewModels = async () => {
+            const newModels: any = await getModels();
+            setModels(newModels.models);
+        }
+        getNewModels();
+    }, []);
+    const handleSubmit = async (summaryText: string, model: string) => {
         try {
-            const forecast = await predictText(summaryText);
+            const forecast = await predictText(summaryText, model);
             console.log(forecast);
             setForecast({
                 ...forecast,
@@ -24,6 +32,7 @@ export function useSummaryTextForm(reset: () => void) {
     return {
         handleSubmit,
         forecast,
-        summary
+        summary,
+        models
     }
 }
