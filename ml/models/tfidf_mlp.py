@@ -154,4 +154,4 @@ meta = {
     "num_classes": int(num_classes),
     "tfidf": {"max_features": 10_000, "ngram_range": [1, 2]},
 }
-(artifacts_dir / "meta.json").write_text(json.dumps(meta))
+(artifacts_dir / "tfidf_mlp_meta.json").write_text(json.dumps(meta))
