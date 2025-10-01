@@ -5,7 +5,7 @@ import { DangerLevels } from "../DangerLevels/DangerLevels";
 export function ForecastSample({ forecast }: { forecast: Forecast }) {
     return (
         <Box>
-            <Text>{forecast.summary}</Text>
+            <Text c="white">{forecast.summary}</Text>
             <DangerLevels levels={forecast.levels} />
         </Box>
     );

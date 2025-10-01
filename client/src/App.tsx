@@ -41,7 +41,7 @@ function App() {
               <Title c="white" ta="center">Avy Brief</Title>
               <Text c="white" ta="center">Enter a summary text to get a forecast</Text>
               <SummaryTextForm />
-              {/* <ForecastSampleList /> */}
+              <ForecastSampleList />
             </Container>
 
           </AppShell.Main>
