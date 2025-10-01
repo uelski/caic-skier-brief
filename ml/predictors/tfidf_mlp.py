@@ -7,7 +7,12 @@ from ml.common.tokenization import load_vectorizer
 from ml.models.tfidf_mlp import MLP  # your tuple-returning model class
 
 class TfidfMLPPredictor:
-    def __init__(self, artifacts_dir: str | Path | None = None):
+    def __init__(self, artifacts_dir: str | Path | None = None, device: str | None = None):
+        # 0) device first
+        if device is None:
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.device = torch.device(device)
+
         self.art = Path(artifacts_dir) if artifacts_dir else Path(__file__).resolve().parents[1] / "artifacts"
         # load meta + vectorizer + model
         meta = json.loads((self.art / "tfidf_mlp_meta.json").read_text())
@@ -19,7 +24,7 @@ class TfidfMLPPredictor:
             num_classes=meta["num_classes"],
             dropout=meta.get("dropout", 0.0),
         ).to(self.device)
-        
+
         state = torch.load(self.art / "tfidf_mlp_model.pt", map_location="cpu")
         self.model.load_state_dict(state)
         self.model.eval()
