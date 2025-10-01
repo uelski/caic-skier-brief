@@ -19,11 +19,17 @@ export async function getSamples(limit: number) {
   return data.forecasts; // Extract the forecasts array from the response
 }
 
-export async function predictText(summaryText: string) {
-  const r = await fetch(`${API}/api/predict-text`, {
+export async function getModels() {
+  const r = await fetch(`${API}/api/models`);
+  if (!r.ok) throw new Error("no_models");
+  return r.json();
+}
+
+export async function predictText(summaryText: string, model: string) {
+  const r = await fetch(`${API}/api/predict-levels`, {
     method: "POST",
     headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({ summaryText }),
+    body: JSON.stringify({ summaryText, model }),
   });
   if (!r.ok) throw new Error(await r.text());
   return r.json() as Promise<{ mode: "baseline" | "trained" | "fallback"; levels: Record<string, number> }>;
