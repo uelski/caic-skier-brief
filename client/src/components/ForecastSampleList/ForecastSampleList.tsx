@@ -10,13 +10,13 @@ export function ForecastSampleList() {
     });
     const { forecasts, handleSubmit, handleLatest } = useForecastSampleList();
     return (
-        <Box>
+        <Box mt="md">
             <Title fz="lg" c="white">Forecast Samples</Title>
             <form onSubmit={form.onSubmit((values) => handleSubmit(values.limit))}>
                 <NumberInput c="white" label="Limit" {...form.getInputProps('limit')} />
-                <Button variant="filled" color='myColor.5' type="submit">Submit</Button>
+                <Button variant="outline" color='myColor.2' type="submit">Submit</Button>
+                <Button m="md" onClick={handleLatest} variant="outline" color='myColor.2' type="submit">Latest</Button>
             </form>
-                <Button onClick={handleLatest} variant="filled" color='myColor.5' type="submit">Latest</Button>
             {forecasts.map((forecast) => (
                 <ForecastSample key={forecast.summary} forecast={forecast} />
             ))}
