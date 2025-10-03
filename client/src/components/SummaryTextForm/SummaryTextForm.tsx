@@ -1,6 +1,6 @@
 import { Button, Textarea, Text, Title, Box, NativeSelect } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { DangerLevels } from '../DangerLevels/DangerLevels';
+import { LevelTable } from '../LevelTable/LevelTable';
 import { useSummaryTextForm } from './hooks/useSummaryTextForm';    
 
 export function SummaryTextForm() {
@@ -21,12 +21,13 @@ export function SummaryTextForm() {
             <form onSubmit={form.onSubmit((values) => handleSubmit(values.summaryText, values.model))}>
                 <NativeSelect c="white" {...form.getInputProps('model')} data={models} label="Model" />
                 <Textarea c="white" label="Summary Text" {...form.getInputProps('summaryText')} />
-                <Button mt="md" variant="default" color='myColor.5' type="submit">Submit</Button>
+                <Button mt="md" variant="outline" color='myColor.2' type="submit">Submit</Button>
             </form>
             {(summary && forecast) && (
                 <>
-                    <Text>{summary}</Text>
-                    <DangerLevels levels={forecast?.levels || {}} />
+                    <Title fz="lg" c="white">Summary</Title>
+                    <Text c="white">{summary}</Text>
+                    <LevelTable prediction={forecast} />
                 </>
             )}
         </Box>

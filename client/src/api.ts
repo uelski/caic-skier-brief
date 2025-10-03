@@ -1,3 +1,5 @@
+import type { Prediction } from "./types";
+
 const API = import.meta.env.VITE_API_BASE || "http://localhost:8000";
 
 export async function health() {
@@ -32,5 +34,5 @@ export async function predictText(summaryText: string, model: string) {
     body: JSON.stringify({ summaryText, model }),
   });
   if (!r.ok) throw new Error(await r.text());
-  return r.json() as Promise<{ mode: "baseline" | "trained" | "fallback"; levels: Record<string, number> }>;
+  return r.json() as Promise<Prediction>;
 }

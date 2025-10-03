@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import type { Forecast, DangerLevel, ElevBand } from '../../../types';
+import type { Prediction } from '../../../types';
 import { predictText, getModels } from '../../../api';
 
 export function useSummaryTextForm(reset: () => void) {
-    const [forecast, setForecast] = useState<Forecast | null>(null);
+    const [forecast, setForecast] = useState<Prediction | null>(null);
     const [summary, setSummary] = useState<string | null>(null);
     const [models, setModels] = useState<string[]>([]);
     useEffect(() => {
@@ -15,12 +15,9 @@ export function useSummaryTextForm(reset: () => void) {
     }, []);
     const handleSubmit = async (summaryText: string, model: string) => {
         try {
-            const forecast = await predictText(summaryText, model);
+            const forecast: Prediction = await predictText(summaryText, model);
             console.log(forecast);
-            setForecast({
-                ...forecast,
-                levels: forecast.levels as Record<ElevBand, DangerLevel>
-            });
+            setForecast(forecast);
             setSummary(summaryText);
             reset();
         } catch (error: unknown) {
