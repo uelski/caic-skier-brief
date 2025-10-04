@@ -34,8 +34,8 @@ const elevationSizes: Record<ElevBand, string> = {
 export function LevelTable({ prediction }: { prediction: Prediction }) {  
 
     return (
-        <Box>  
-            <Title fz="lg" c="white">Danger Levels</Title>
+        <Box mb="lg">  
+            <Title mb="xs" fz="lg" c="white">Danger Levels</Title>
             <Flex direction="column">
                 {
                     ["above_treeline", "treeline", "below_treeline"].map((elevBand) => (
