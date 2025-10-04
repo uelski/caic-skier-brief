@@ -1,5 +1,4 @@
 .DS_Store
 .venv/
 .ml-venv/
-*.json
 __pycache__/
