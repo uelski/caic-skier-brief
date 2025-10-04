@@ -39,7 +39,7 @@ function App() {
           <AppShell.Main>
             <Container p="lg">
               <Warning />
-              <Title c="white" ta="center">Avy Brief</Title>
+              <Title c="white" ta="center">Avalanche Forecast and Danger Prediction</Title>
 
               <SummaryTextForm />
               <ForecastSampleList />
