@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 
 import { SummaryTextForm, ForecastSampleList, Warning } from './components';
-import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple, Text, AppShell, Group } from '@mantine/core';
+import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple, AppShell, Group } from '@mantine/core';
 
 const myColor: MantineColorsTuple = [
   '#f1f4fe',
