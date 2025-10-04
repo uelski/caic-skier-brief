@@ -33,7 +33,7 @@ function App() {
         >
           <AppShell.Header withBorder={true} style={{ borderColor: theme!.colors!.myColor![4] }} >
             <Group bg="black" c="white" h="100%" px="md">
-              CAIC DATA
+              CAIC DATA PROJECT
             </Group>
           </AppShell.Header>
           <AppShell.Main>
