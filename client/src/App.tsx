@@ -1,6 +1,6 @@
 import '@mantine/core/styles.css';
 
-import { SummaryTextForm, ForecastSampleList } from './components';
+import { SummaryTextForm, ForecastSampleList, Warning } from './components';
 import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple, Text, AppShell, Group } from '@mantine/core';
 
 const myColor: MantineColorsTuple = [
@@ -38,8 +38,9 @@ function App() {
           </AppShell.Header>
           <AppShell.Main>
             <Container p="lg">
+              <Warning />
               <Title c="white" ta="center">Avy Brief</Title>
-              
+
               <SummaryTextForm />
               <ForecastSampleList />
             </Container>
