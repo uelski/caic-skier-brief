@@ -1,0 +1,18 @@
+# node projects
+client/node_modules
+client/dist
+**/.next
+**/build
+
+# python caches
+**/__pycache__
+**/*.pyc
+
+# local env & IDE
+.env
+.vscode
+.idea
+
+# large data / artifacts (we pull these from GCS at runtime)
+ml/artifacts
+data
