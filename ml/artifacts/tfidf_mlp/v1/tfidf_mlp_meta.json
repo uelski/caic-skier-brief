@@ -1,0 +1,1 @@
+{"input_dim": 10000, "num_classes": 6, "tfidf": {"max_features": 10000, "ngram_range": [1, 2]}}

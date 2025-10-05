@@ -8,6 +8,8 @@ import numpy as np
 from ml.common.processing import make_splits   # your renamed file
 from ml.common.tokenization import fit_tfidf, transform_dense, save_vectorizer
 
+VERSION = "v1"
+
 # define dataset class and loaders
 class AvalancheDataset(Dataset):
     def __init__(self, X, y_below, y_treeline, y_above):
@@ -69,7 +71,7 @@ def main():
     # Save the fitted vectorizer for inference
     from pathlib import Path
     project_root = Path(__file__).resolve().parents[2]   # from ml/models/... up to repo root
-    artifacts_dir = project_root / "ml" / "artifacts"
+    artifacts_dir = project_root / "ml" / "artifacts" / "tfidf_mlp" / VERSION
     artifacts_dir.mkdir(parents=True, exist_ok=True)
     save_vectorizer(vec, str(artifacts_dir / "tfidf.joblib"))
 
@@ -146,7 +148,7 @@ def main():
         )
 
     # save model weights
-    torch.save(model.state_dict(), "ml/artifacts/tfidf_mlp_model.pt")
+    torch.save(model.state_dict(), artifacts_dir / "tfidf_mlp_model.pt")
 
     # save minimal metadata needed to rebuild the model
     D = X_train_vec.shape[1]                       # input dim used to build the model
