@@ -2,3 +2,4 @@
 .venv/
 .ml-venv/
 __pycache__/
+.env

@@ -2,4 +2,4 @@ data/*.json
 data/normalized/*.json
 data/raw/*.json
 tmp/*.json
-artifacts/*.json
+artifacts/**/**/*.json
