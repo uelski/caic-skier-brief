@@ -1,6 +1,6 @@
 import type { Prediction } from "./types";
 
-const API = import.meta.env.VITE_API_BASE || "http://localhost:8000";
+const API = import.meta.env.VITE_API_BASE_URL || "https://caic-api-wcoyzeysma-uc.a.run.app";
 
 export async function health() {
   const r = await fetch(`${API}/api/health`);
