@@ -61,7 +61,11 @@ app = FastAPI(title="Avalanche Baseline API", version="0.1", lifespan=lifespan)
 # Dev CORS (tighten in prod)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], allow_credentials=True,
+    allow_origins=["http://localhost:5173",          # Vite dev
+        "http://127.0.0.1:5173",          # sometimes handy
+        "https://caic.uelski.dev"], 
+        allow_origin_regex=r"^https://.*\.pages\.dev$",
+        allow_credentials=True,
     allow_methods=["*"], allow_headers=["*"],
 )
 
