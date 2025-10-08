@@ -20,7 +20,7 @@ export function ForecastSampleList() {
             </form>
             {loading && <Loader color="white" />}            
             {forecasts.map((forecast) => (
-                <Box>
+                <Box key={forecast.summary}>
                     <Title fz="lg" c="white" mb="sm">Summary</Title>
                     <Text mb="sm" c="white">{forecast.summary}</Text>
                     <LevelTable prediction={{
