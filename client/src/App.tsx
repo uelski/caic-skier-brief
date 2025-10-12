@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 
-import { SummaryTextForm, ForecastSampleList, Warning } from './components';
-import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple, AppShell, Group } from '@mantine/core';
+import { SummaryTextForm, ForecastSampleList, Warning, NavLinks } from './components';
+import { Box, Container, MantineProvider, Title, createTheme, type MantineColorsTuple, AppShell, Group, Flex, Text } from '@mantine/core';
 
 const myColor: MantineColorsTuple = [
   '#f1f4fe',
@@ -32,9 +32,12 @@ function App() {
         padding="md"
         >
           <AppShell.Header withBorder={true} style={{ borderColor: theme!.colors!.myColor![4] }} >
-            <Group bg="black" c="white" h="100%" px="md">
-              CAIC DATA PROJECT
-            </Group>
+          <Flex bg="black" c="white" h="100%" justify="space-between">
+              <Group bg="black" c="white" h="100%" px="md">
+                <Text fw={700}>CAIC DATA PROJECT</Text>
+              </Group>
+              <NavLinks />
+            </Flex>
           </AppShell.Header>
           <AppShell.Main>
             <Container p="lg">
